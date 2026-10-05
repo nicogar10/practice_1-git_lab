@@ -1,5 +1,8 @@
 package com.daw2;
 
+/**
+ * Represents a puzzle with a solution, points and attempts
+ */
 public class Puzzle {
 
     // Contador estático para asignar IDs únicos
@@ -24,10 +27,17 @@ public class Puzzle {
 
     private int intentos;
 
+    /**
+     * Creates a new puzzle
+     * @param nombre the name of the puzzle
+     * @param descripcion the description of the puzzle
+     * @param solucion the solution of the puzzle
+     * @param puntos the points given for solving the puzzle
+     * @param pista a hint for the puzzle
+     */
     public Puzzle(String nombre, String descripcion, String solucion,
-
                   int puntos, String pista) {
-
+        
         this.id = ++contadorId;
 
         this.nombre = nombre;
@@ -46,8 +56,13 @@ public class Puzzle {
 
     }
 
-    // Constructor sobrecargado sin pista
-
+    /**
+     * Creates a new puzzle without a hint
+     * @param nombre the name of the puzzle
+     * @param descripcion the description of the puzzle
+     * @param solucion the solution of the puzzle
+     * @param puntos the points given for solving the puzzle
+     */
     public Puzzle(String nombre, String descripcion, String solucion, int puntos) {
 
         this(nombre, descripcion, solucion, puntos, "");
@@ -55,43 +70,70 @@ public class Puzzle {
     }
 
     // ====== GETTERS ======
-
+    /**
+     * Gets the puzzle ID
+     * @return the puzzle ID
+     */
     public int getId() {
 
         return id;
 
     }
 
+    /**
+     * Gets the name of the puzzle
+     * @return the name of the puzzle
+     */
     public String getNombre() {
 
         return nombre;
 
     }
 
+    /**
+     * Gets the description of the puzzle
+     * @return the puzzle description
+     */
     public String getDescripcion() {
 
         return descripcion;
 
     }
 
+    /**
+     * Gets the points of the puzzle
+     * @return the puzzle points
+     */
     public int getPuntos() {
 
         return puntos;
 
     }
 
+    /**
+     * Checks if the puzzle has been solved
+     * @return true if the puzzle is solved, false if is not
+     */
     public boolean isResuelto() {
 
         return resuelto;
 
     }
 
+    /**
+     * Gets the number of attempts
+     * @return the number of attempts
+     */
     public int getIntentos() {
 
         return intentos;
 
     }
 
+    /**
+     * Gets a hint of the puzzle
+     * @return a puzzle hint
+     */
     public String getPista() {
 
         return pista;
@@ -99,13 +141,20 @@ public class Puzzle {
     }
 
     // ====== SETTERS ======
-
+    /**
+     * Changes the name of the puzzle
+     * @param nombre the new name of the puzzle
+     */
     public void setNombre(String nombre) {
 
         this.nombre = nombre;
 
     }
 
+    /**
+     * Changes the description of the puzzle
+     * @param descripcion the new description of the puzzle
+     */
     public void setDescripcion(String descripcion) {
 
         this.descripcion = descripcion;
@@ -113,7 +162,11 @@ public class Puzzle {
     }
 
     // ====== MÉTODOS DE LÓGICA DE NEGOCIO ======
-
+    /**
+     * Tries to solve the puzzle with a given answer
+     * @param respuesta the answer given by the player
+     * @return true if the answer is correct, false if is not
+     */
     public boolean intentarResolver(String respuesta) {
 
         this.intentos++;
@@ -127,7 +180,6 @@ public class Puzzle {
             System.out.println("Correcto. Puzzle '" + nombre + "' resuelto");
 
             System.out.println("   Ganaste " + puntos + " puntos en " +
-
                              intentos + " intentos");
 
             return true;
@@ -150,6 +202,9 @@ public class Puzzle {
 
     }
 
+    /**
+     * Resets the puzzle and the number of attempts
+     */
     public void reiniciar() {
 
         this.resuelto = false;
@@ -158,14 +213,21 @@ public class Puzzle {
 
     }
 
+    /**
+     * Creates a copy of the puzzle
+     * @return a new puzzle with the same information
+     */
     public Puzzle clonar() {
 
         return new Puzzle(nombre, descripcion, solucion, puntos, pista);
 
     }
 
+    /**
+     * Returns a text with the puzzle information
+     * @return the puzzle ID, name, state and points
+     */
     @Override
-
     public String toString() {
 
         String estado = resuelto ? "Resuelto" : "Pendiente";
@@ -176,8 +238,12 @@ public class Puzzle {
 
     }
 
+    /**
+     * Checks if two puzzles have the same ID
+     * @param obj the object to compare
+     * @return true if both puzzles have the same ID, false if is not
+     */
     @Override
-
     public boolean equals(Object obj) {
 
         if (this == obj) return true;
