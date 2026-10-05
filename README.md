@@ -45,6 +45,12 @@ The application allows you to:
 * Add points to the game.
 * Check the difficulty level.
 
+Technologies Used
+* Java
+* Git
+* GitHub
+* Visual Studio Code / IntelliJ IDEA
+
 ## Documentation
 
 The Java classes include Javadoc comments to explain the main classes, constructors and methods.
